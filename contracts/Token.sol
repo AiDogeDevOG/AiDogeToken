@@ -15,16 +15,14 @@ contract AiDogeToken is Context, IERC20Metadata {
   string private _name;
   string private _symbol;
   uint8 private constant _decimals = 18;
-  uint256 public constant hardCap = 1_000_000_000_000 * (10 ** _decimals); //1 Trillion
 
   constructor(string memory name_, string memory symbol_) {
-    address[4] memory _to = [0x8E3F575e21b718Aa001C89f887050f43A8eeC20D,0x885ffCE96Ce532cd8b3828Cea77E9CBFEa949fb8,0x43ea1DcBB8d15832B54B3C6e2A0f8bDd7ED8DFF1,0xf4ea3a36ec0102822d5bBDbF229FC14E9D43CF0D];
     _name = name_;
     _symbol = symbol_;
-    uint256 split = hardCap / _to.length;
-    for (uint256 i; i < _to.length; i++) {
-      _mint(_to[i], split);
-    }
+    _mint(0x8E3F575e21b718Aa001C89f887050f43A8eeC20D, 250_000_000_000 * (10 ** _decimals));
+    _mint(0x885ffCE96Ce532cd8b3828Cea77E9CBFEa949fb8, 250_000_000_000 * (10 ** _decimals));
+    _mint(0x43ea1DcBB8d15832B54B3C6e2A0f8bDd7ED8DFF1, 250_000_000_000 * (10 ** _decimals));
+    _mint(0xf4ea3a36ec0102822d5bBDbF229FC14E9D43CF0D, 250_000_000_000 * (10 ** _decimals));
   }
 
   function name() external view virtual override returns (string memory) {
